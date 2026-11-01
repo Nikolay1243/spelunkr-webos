@@ -1,0 +1,24 @@
+/* Restore the original site's header controls in its TV layout. */
+html.theme-8s.tv .header-nav{display:flex!important;align-items:center;margin-left:auto;gap:5px}
+html.theme-8s.tv .header-signin,html.theme-8s.tv .header-user-wrap{display:inline-flex!important}
+html.theme-8s.tv .header-nav-item,html.theme-8s.tv .header-signin{font-size:var(--8s-nav-s);height:32px;min-height:32px;padding:0 10px;white-space:nowrap}
+html.theme-8s.tv .prevue-header-clock{margin-left:12px;font-size:var(--8s-nav-s)}
+html.theme-8s.tv .prevue-header-logo{flex-shrink:1;font-size:var(--8s-nav-s)}
+html.theme-8s.tv .header-nav-home{display:inline-flex!important}
+html.theme-8s.tv .anon-nudge{display:flex!important}
+html.theme-8s.tv .header-nav-item:focus,html.theme-8s.tv .header-signin:focus,html.theme-8s.tv .header-user-wrap button:focus{outline:3px solid #ffe200;outline-offset:2px}
+/* CRT modes target external 4:3 adapters; omit the control on this flat-TV app. */
+html.tv .crt-ctl{display:none!important}
+.webos-spelunk-hold{position:fixed;left:50%;top:13vh;transform:translateX(-50%);z-index:2147483646;width:340px;padding:20px 26px;background:#202858f2;border:3px solid #365aba;box-shadow:inset 0 0 10px #3e60ad,0 4px 18px #0008;pointer-events:none;color:#ffe200;text-align:center}
+.webos-spelunk-hold[hidden]{display:none!important}
+.webos-spelunk-hold-label{font-family:"Star4000",monospace;font-size:30px;line-height:1.2;text-shadow:2px 2px #000;margin-bottom:14px}
+.webos-spelunk-hold-bar{height:12px;background:#080d30;border:1px solid #5272c5;overflow:hidden}
+.webos-spelunk-hold-fill{width:100%;height:100%;background:linear-gradient(#fff16b,#edc900);transform-origin:left;transform:scaleX(0)}
+/* Set video-plane geometry once per mode switch instead of animating layout. */
+html.theme-8s.tv .prevue-header-bar,
+html.theme-8s.tv .stage,
+html.theme-8s.tv .stage-video-col,
+html.theme-8s.tv .stage-info-col{transition:none!important}
+html.theme-8s.tv .stage :is(.stage-player-header,.stage-keys,.stage-volume-bar,.stage-dvr-bar,.stage-player-info,.stage-guide-controls,.stage-visit-channel,.stage-branding){transition-property:opacity!important;transition-duration:100ms!important;transition-delay:0s!important}
+html.theme-8s.tv .stage--watch .stage-video-col::before,
+html.theme-8s.tv .stage--watch .stage-video-col>*{animation:none!important}

@@ -1,0 +1,1 @@
+{"id":"tv.spelunkr.webos.auth","description":"App-local Discord OAuth return helper","services":[{"name":"tv.spelunkr.webos.auth","description":"Return Discord sign-in to the packaged Spelunkr app"}]}

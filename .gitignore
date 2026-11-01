@@ -1,0 +1,16 @@
+.DS_Store
+node_modules/
+dist/
+output/
+# Downloaded upstream client and retired experiments remain local.
+vendor/
+prototype/
+scripts/extract-scheduler.mjs
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx

@@ -1,0 +1,14 @@
+import {readFile,writeFile,copyFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+const app=JSON.parse(await readFile('src/appinfo.json','utf8'));
+const repo='https://github.com/Nikolay1243/spelunkr-webos';
+const file=`${app.id}_${app.version}_all.ipk`;
+const digest=createHash('sha256').update(await readFile(`output/${file}`)).digest('hex');
+await mkdir('homebrew',{recursive:true});
+await copyFile('dist/icon.png','homebrew/icon.png');
+const iconUri='https://raw.githubusercontent.com/Nikolay1243/spelunkr-webos/main/homebrew/icon.png';
+const manifest={id:app.id,version:app.version,type:app.type,title:app.title,appDescription:app.appDescription,iconUri,sourceUrl:repo,rootRequired:false,ipkUrl:`${repo}/releases/download/v${app.version}/${file}`,ipkHash:{sha256:digest}};
+await writeFile(`output/${app.id}.manifest.json`,JSON.stringify(manifest,null,2)+'\n');
+await writeFile('output/SHA256SUMS',`${digest}  ${file}\n`);
+await writeFile('homebrew/apps.json',JSON.stringify({paging:{page:1,count:1,maxPage:1,itemsTotal:1},packages:[{id:app.id,title:app.title,iconUri,manifestUrl:`${repo}/releases/latest/download/${app.id}.manifest.json`}]},null,2)+'\n');
+console.log(`Prepared v${app.version}: ${file}, manifest, SHA256SUMS and Homebrew listing.`);

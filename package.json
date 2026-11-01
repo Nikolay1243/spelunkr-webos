@@ -1,0 +1,23 @@
+{
+  "name": "spelunkr-webos",
+  "version": "0.3.7",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync:site": "node scripts/sync-site.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.js",
+    "package": "npm run build && ares-package dist output/auth-service -o output",
+    "dev": "node scripts/serve.mjs",
+    "sync:site:latest": "node scripts/sync-site.mjs --latest",
+    "release:prepare": "npm run package && node scripts/release.mjs"
+  },
+  "devDependencies": {
+    "acorn": "^8.15.0",
+    "esbuild": "^0.25.0",
+    "eslint-scope": "^8.4.0"
+  },
+  "dependencies": {
+    "ws": "8.22.1"
+  }
+}

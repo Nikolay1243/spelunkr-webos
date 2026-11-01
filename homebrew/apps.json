@@ -1,0 +1,16 @@
+{
+  "paging": {
+    "page": 1,
+    "count": 1,
+    "maxPage": 1,
+    "itemsTotal": 1
+  },
+  "packages": [
+    {
+      "id": "tv.spelunkr.webos",
+      "title": "Spelunkr",
+      "iconUri": "https://raw.githubusercontent.com/Nikolay1243/spelunkr-webos/main/homebrew/icon.png",
+      "manifestUrl": "https://github.com/Nikolay1243/spelunkr-webos/releases/latest/download/tv.spelunkr.webos.manifest.json"
+    }
+  ]
+}

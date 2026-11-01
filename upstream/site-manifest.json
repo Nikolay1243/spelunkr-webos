@@ -1,0 +1,108 @@
+{
+  "origin": "https://spelunkr.tv",
+  "main": "/assets/index-TBd_llvZ.js",
+  "css": "/assets/index-Dr3H5Byb.css",
+  "retrievedAt": "2026-10-31T23:32:30.794Z",
+  "assets": {
+    "/assets/index-TBd_llvZ.js": {
+      "sha256": "8d3621fa35b6bc64968f3eefa74edb03587554394830eee0eb36b4e22b61c871",
+      "bytes": 507695
+    },
+    "/assets/gumshoe-BKzFTig8.js": {
+      "sha256": "b42cad0515287826f0ce749e83446d72e33bb603027bc71ab8e8e6e678ecb471",
+      "bytes": 15604
+    },
+    "/assets/kit-CydTblCI.js": {
+      "sha256": "ffa7900bed3af6faf0d1b0061926e4a2d9924a9f3d963817c7a90dd534142e9e",
+      "bytes": 5094
+    },
+    "/assets/rubber-hose-Dk9kLNAc.js": {
+      "sha256": "19e6110c1fe817ceb20264a80c40db1dd80d19f241e18cb6a6b85fc2c4cf1cbe",
+      "bytes": 15740
+    },
+    "/assets/homeroom-F6io1iHJ.js": {
+      "sha256": "0ac437764fd69060a1ea3ac62000448733669e08fa2a06a955952b9760759615",
+      "bytes": 14240
+    },
+    "/assets/fallout-shelter-QD4WnK85.js": {
+      "sha256": "96db00b736a20efa9613b6f6d95d9967c002393dd59be1cd2fbae12de40b1a7b",
+      "bytes": 13552
+    },
+    "/assets/mandatory-viewing-DtImliiG.js": {
+      "sha256": "f8e1ce660e38c6963b69add84f27d288b48c1f75e6716487bde481f08c79cf7f",
+      "bytes": 11572
+    },
+    "/assets/vacation-slides-DCnejdQn.js": {
+      "sha256": "57b8fbd9fd605dc0ddf3506d5354fb406550e7d55610121c8679171a8a85668f",
+      "bytes": 13418
+    },
+    "/assets/unpaid-programming-8CqGYaUV.js": {
+      "sha256": "28e2412238f8be3cdb137c43325c453c65c2dcc5df8d67ce6e5c8b93bae4a6fd",
+      "bytes": 7935
+    },
+    "/assets/dial-small-DsR6qPya.js": {
+      "sha256": "d615e413d67d7a1c0b704c5826afd6fe0880b5916b1c9a6197c612c437cea91d",
+      "bytes": 2741
+    },
+    "/assets/board-words-De6YMPlv.js": {
+      "sha256": "470fef0db20920da1811c32d1c9a3f5ab5f7075c57da12a3f4614b5e732cebb7",
+      "bytes": 3444
+    },
+    "/assets/Subtitles-CkG7Yw_f.js": {
+      "sha256": "20950d1700fd2eb5ae3e961665df89174e8cac5614ea405ec83a1c06d829adb0",
+      "bytes": 1616
+    },
+    "/assets/subtitles-nGaWLwEf.js": {
+      "sha256": "c859dcc61c7b18ba7b62301b5cb65066ca59c1f41495faa1d71a3d3833e42328",
+      "bytes": 1210
+    },
+    "/assets/AdminApp-CCtLuQ1e.js": {
+      "sha256": "fce9ce526ff4dea6e9f1dc87820dd76e49dcfdfe15a04a61c1204914e14e47ef",
+      "bytes": 200053
+    },
+    "/assets/ClipPage-KYQztF0o.js": {
+      "sha256": "5834096c8ac8213db46456ce790014c48f19d73d9f425a0aa226bafc2f2c36a6",
+      "bytes": 6363
+    },
+    "/assets/AboutPage-DB71q455.js": {
+      "sha256": "8332c8e3b47eab5b4efc70c5768625953922c548a0508487847e96f425483f09",
+      "bytes": 8227
+    },
+    "/assets/DirectoryPage-BToDVT1Q.js": {
+      "sha256": "f980fac0a439a8cfa597a31ecec2fda1b8869532e23101ae3b9f6ab130a2f2d0",
+      "bytes": 4663
+    },
+    "/assets/AppPage-BcvIT_Ey.js": {
+      "sha256": "8d2df4aa290320a57b36121922dd130ddbb5a8ab341edab45db6c035d4f5ef13",
+      "bytes": 7199
+    },
+    "/assets/UpdatesPage-BkakzfXq.js": {
+      "sha256": "195fb594299991f9b431f2acb0ce52b82887f7614f67d6773921bd932453e14a",
+      "bytes": 3505
+    },
+    "/assets/AdminApp-Cm-uk-b0.css": {
+      "sha256": "9f8130ba5eb50ca5b55ded91e378cb68dc3a0a31f75cd4a5db0be2584e524da3",
+      "bytes": 29628
+    },
+    "/assets/about-YzxQpGV1.css": {
+      "sha256": "a3145ad0674c32e8659c116eaf2d00c2d89cd2de6be7b3fd70a8ba9a7e643d2d",
+      "bytes": 3313
+    },
+    "/assets/DirectoryPage-CMYzUXou.css": {
+      "sha256": "63b0df97e8e730c37c7011172f3df7ad3c77c6b0c143e817a35115bc5f57716f",
+      "bytes": 2186
+    },
+    "/assets/AppPage-DiubwanG.css": {
+      "sha256": "a5343243a0d1f2c52505d4cfae44baef9bcd5fd718aa44b152dd47f3e6e775c7",
+      "bytes": 1696
+    },
+    "/assets/UpdatesPage-DZhb2nCD.css": {
+      "sha256": "c793380725fad9e693d385a2f4ecfc04270249fc5d720e6abc8df600aabe6148",
+      "bytes": 1606
+    },
+    "/assets/index-Dr3H5Byb.css": {
+      "sha256": "7443cccb7de951a69539d25ffd5c662ade57870fa95dc9d48b174552f33b16d7",
+      "bytes": 233186
+    }
+  }
+}
