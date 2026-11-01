@@ -2,6 +2,10 @@
 
 An independent, native webOS application for LG TVs, using the original Spelunkr website interface with Magic Remote controls. No Android runtime or separate LAN server is required.
 
+![Spelunkr guide running on webOS](docs/images/guide.png)
+
+*Guide captured on an LG webOS TV. The hardware video layer is not included in the screenshot.*
+
 ## Install with Homebrew Channel
 
 Requires [Homebrew Channel](https://www.webosbrew.org/) already installed on your TV.
