@@ -144,6 +144,10 @@
     if (timer) clearTimeout(timer);
     timer = setTimeout(settle, DEBOUNCE_MS);
   }
+  // The vendor bundle replaces window.SpelunkrWebOS wholesale when it boots
+  // (`window.SpelunkrWebOS={location,signIn}`), which wipes anything we hung
+  // there. Own key first, shared object second for older builds.
+  window.__spelunkrChannelStep = channelStep;
   window.SpelunkrWebOS = window.SpelunkrWebOS || {};
   window.SpelunkrWebOS.channelStep = channelStep;
 

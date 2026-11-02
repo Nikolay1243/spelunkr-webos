@@ -63,7 +63,11 @@ const remote=new PlayerRemote({
   onHoldStart:duration=>holdProgress.show(duration),
   onHoldEnd:()=>holdProgress.hide(),
   getPlayer:()=>window.SpelunkrWebOS.player,
-  channelStep:delta=>{const bridge=window.SpelunkrWebOS;if(bridge&&typeof bridge.channelStep==='function')bridge.channelStep(delta);},
+  channelStep:delta=>{
+    if(typeof window.__spelunkrChannelStep==='function'){window.__spelunkrChannelStep(delta);return;}
+    const bridge=window.SpelunkrWebOS;
+    if(bridge&&typeof bridge.channelStep==='function')bridge.channelStep(delta);
+  },
   isWatching:()=>!!document.querySelector('.stage--watch') && !document.querySelector('[role="dialog"],.cc-panel') && !document.activeElement?.matches('input,textarea,select,[contenteditable="true"]'),
   shortOK:target=>{
     const focused=target?.isConnected?target.closest?.('button,a[href],[role="button"]'):null;
