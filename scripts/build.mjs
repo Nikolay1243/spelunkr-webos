@@ -37,7 +37,7 @@ await build({stdin:{contents:`import './src/legacy-shims.js'; import './src/webo
 // Guard: a target regression has to fail here, not on someone's TV.
 try{parse(await readFile('dist/app.js','utf8'),{ecmaVersion:2019,sourceType:'script'});}
 catch(error){throw new Error(`dist/app.js is not ES2019-parseable, so webOS 6 cannot load it (${error.message}). Check BROWSER_TARGET in scripts/build.mjs.`);}
-for(const file of ['index.html','appinfo.json','boot-guard.js'])await copyFile('src/'+file,'dist/'+file);
+for(const file of ['index.html','appinfo.json','boot-guard.js','watch-on-boot.js'])await copyFile('src/'+file,'dist/'+file);
 // Original pixel S icon, generated without external artwork or image dependencies.
 function crc(bytes){let c=0xffffffff;for(const byte of bytes){c^=byte;for(let n=0;n<8;n++)c=(c>>>1)^((c&1)?0xedb88320:0);}return (c^0xffffffff)>>>0;}
 function chunk(type,data){const t=Buffer.from(type), n=Buffer.alloc(4), c=Buffer.alloc(4);n.writeUInt32BE(data.length);c.writeUInt32BE(crc(Buffer.concat([t,data])));return Buffer.concat([n,t,data,c]);}
