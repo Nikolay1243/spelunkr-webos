@@ -28,7 +28,7 @@ const adaptLocation={name:'webos-location',setup(build){
   });
 }};
 await build({stdin:{contents:`import './src/webos-bridge.js'; import './vendor/site${snapshot.css}'; import './src/webos-ui.css'; window.SpelunkrWebOS.ready.then(()=>import('./vendor/site${snapshot.main}')); `,resolveDir:process.cwd()},outfile:'dist/app.js',bundle:true,format:'iife',target:'chrome87',minify:true,define:{'import.meta':'{}'},plugins:[adaptLocation]});
-for(const file of ['index.html','appinfo.json'])await copyFile('src/'+file,'dist/'+file);
+for(const file of ['index.html','appinfo.json','boot-guard.js'])await copyFile('src/'+file,'dist/'+file);
 // Original pixel S icon, generated without external artwork or image dependencies.
 function crc(bytes){let c=0xffffffff;for(const byte of bytes){c^=byte;for(let n=0;n<8;n++)c=(c>>>1)^((c&1)?0xedb88320:0);}return (c^0xffffffff)>>>0;}
 function chunk(type,data){const t=Buffer.from(type), n=Buffer.alloc(4), c=Buffer.alloc(4);n.writeUInt32BE(data.length);c.writeUInt32BE(crc(Buffer.concat([t,data])));return Buffer.concat([n,t,data,c]);}

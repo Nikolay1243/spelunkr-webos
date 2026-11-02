@@ -2,6 +2,10 @@
 <html lang="en" class="theme-8s tv"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Spelunkr for webOS</title>
+<!-- Loaded before <base> on purpose: the base tag points at the website, so a
+     relative script URL after it would be fetched from spelunkr.tv instead of
+     the package. This must be a blocking script ahead of the bundle. -->
+<script src="boot-guard.js"></script>
 <base href="https://spelunkr.tv/">
 <meta name="theme-color" content="#1c0a57">
 <style>html,body{margin:0;background:#1c0a57;color:#ffe200}#webos-loading{height:100vh;display:flex;align-items:center;justify-content:center;font:24px monospace}</style>
