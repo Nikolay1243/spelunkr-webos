@@ -13,5 +13,6 @@
   var script=document.createElement('script');script.src=new URL('app.js',base).href;
   script.onerror=function(){document.getElementById('app').textContent='SIGNAL LOST. Close and reopen Spelunkr.';};
   document.body.appendChild(script);
+  var watch=document.createElement('script');watch.src=new URL('watch-on-boot.js',base).href;document.body.appendChild(watch);
 })();
 </script></body></html>
