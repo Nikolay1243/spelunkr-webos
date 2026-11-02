@@ -17,8 +17,11 @@
 
   var POLL_MS = 700;
   var GIVE_UP_MS = 15000;
+  var SETTLE_MS = 1500;   // let the app render before the first attempt
+  var RETRY_MS = 1200;    // spacing between attempts
   var started = Date.now();
   var attempts = 0;
+  var lastAttemptAt = 0;
   var done = false;
   var timer = null;
 
@@ -33,12 +36,6 @@
 
   function isWatch() {
     return appClass().indexOf('app--watch') !== -1;
-  }
-
-  function playerReady() {
-    var video = document.querySelector('video');
-    if (!video) return false;
-    return video.readyState >= 2 && !video.paused;
   }
 
   function onGuideRoute() {
@@ -56,19 +53,25 @@
 
   function tick() {
     if (done) return;
+    var now = Date.now();
 
-    if (Date.now() - started > GIVE_UP_MS) return stop('skipped:timeout');
+    if (now - started > GIVE_UP_MS) return stop('skipped:timeout');
     if (isWatch()) return stop('already-watch');
     if (!onGuideRoute()) return stop('skipped:route');
-    if (!playerReady()) return;
 
-    if (attempts >= 2) return stop('skipped:no-effect');
-
+    // Wait for the app to render its player, but do NOT require playback: on some
+    // boots the channel only starts once watch mode is entered, and requiring a
+    // playing video left the app sitting on the guide.
     var tile = document.querySelector('.stage-video-wrap.clickable') ||
                document.querySelector('.stage-video-wrap');
-    if (!tile) return;
+    if (!tile || !document.querySelector('video')) return;
+    if (now - started < SETTLE_MS) return;
+
+    if (attempts >= 3) return stop('skipped:no-effect');
+    if (now - lastAttemptAt < RETRY_MS) return;
 
     attempts += 1;
+    lastAttemptAt = now;
     try {
       tile.click();
     } catch (err) {
