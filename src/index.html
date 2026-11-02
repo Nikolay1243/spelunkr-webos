@@ -13,5 +13,6 @@
   var script=document.createElement('script');script.src=new URL('app.js',base).href;
   script.onerror=function(){document.getElementById('app').textContent='SIGNAL LOST. Close and reopen Spelunkr.';};
   document.body.appendChild(script);
+  var burst=document.createElement('script');burst.src=new URL('channel-coalesce.js',base).href;document.body.appendChild(burst);
 })();
 </script></body></html>
