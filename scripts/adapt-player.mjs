@@ -36,10 +36,17 @@ export function adaptPlayer(source) {
   expect(source, 'const[hr,ai]=M(!1)', 1, 'player key-menu state');
   expect(source, 'onSpelunk:f', 1, 'onSpelunk prop');
   expect(source, 'onGuide:y', 2, 'onGuide prop');
+  // The volume state is local to the player, so the wheel needs the setter the
+  // player already uses for its own ArrowUp/ArrowDown handling.
+  const volumeSetter = source.match(/([A-Za-z_$][\w$]*)\(([A-Za-z_$][\w$]*)=>Math\.min\(\2\+\.05,1\)\)/);
+  if (!volumeSetter) throw new Error(`${DRIFT} — volume setter`);
+  const setVolume = volumeSetter[1];
+  expect(source, `${setVolume}(${volumeSetter[2]}=>Math.min(${volumeSetter[2]}+.05,1))`, 1, 'volume setter call site');
   const refHook = /([A-Za-z_$][\w$]*)\.current=([A-Za-z_$][\w$]*),([A-Za-z_$][\w$]*)\(\(\)=>\{const ([A-Za-z_$][\w$]*)=([A-Za-z_$][\w$]*)=>\1\.current\(\5\)/;
   source = swap(source, refHook, (match) =>
     'window.SpelunkrWebOS.player={isMenuVisible:()=>hr,showMenu:()=>ai(!0),' +
-    `hideMenu:()=>ai(!1),spelunk:()=>f&&f(),guide:()=>y&&y()},${match}`, 'player API hook');
+    `hideMenu:()=>ai(!1),spelunk:()=>f&&f(),guide:()=>y&&y(),` +
+    `changeVolume:d=>${setVolume}(v=>Math.max(0,Math.min(1,v+d)))},${match}`, 'player API hook');
   expect(source, 'window.SpelunkrWebOS.player=', 1, 'player API injected');
 
   // 2. The preview must be able to show the channel that is actually playing,

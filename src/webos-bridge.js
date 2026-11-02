@@ -55,6 +55,7 @@ function returnToWatch() {
   if(!watch)return false;watch.click();return true;
 }
 import './header-navigation.js';
+import './wheel-controls.js';
 import { PlayerRemote } from './remote-controls.js';
 import { HoldProgress } from './hold-progress.js';
 const holdProgress=new HoldProgress();
@@ -62,6 +63,7 @@ const remote=new PlayerRemote({
   onHoldStart:duration=>holdProgress.show(duration),
   onHoldEnd:()=>holdProgress.hide(),
   getPlayer:()=>window.SpelunkrWebOS.player,
+  channelStep:delta=>{const bridge=window.SpelunkrWebOS;if(bridge&&typeof bridge.channelStep==='function')bridge.channelStep(delta);},
   isWatching:()=>!!document.querySelector('.stage--watch') && !document.querySelector('[role="dialog"],.cc-panel') && !document.activeElement?.matches('input,textarea,select,[contenteditable="true"]'),
   shortOK:target=>{
     const focused=target?.isConnected?target.closest?.('button,a[href],[role="button"]'):null;

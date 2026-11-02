@@ -135,6 +135,18 @@
     timer = setTimeout(settle, DEBOUNCE_MS);
   }
 
+  // The Magic Remote wheel drives the same burst path as the CH rocker, so a
+  // fast spin tunes once instead of once per notch.
+  function channelStep(delta) {
+    if (!delta) return;
+    pending += delta;
+    say('burst:' + pending);
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(settle, DEBOUNCE_MS);
+  }
+  window.SpelunkrWebOS = window.SpelunkrWebOS || {};
+  window.SpelunkrWebOS.channelStep = channelStep;
+
   window.addEventListener('keydown', onKeyDown, true);
   say('armed');
 }());
