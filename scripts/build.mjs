@@ -27,7 +27,16 @@ const adaptLocation={name:'webos-location',setup(build){
     return {contents:source,loader:'js',resolveDir:resolve(args.path,'..')};
   });
 }};
-await build({stdin:{contents:`import './src/webos-bridge.js'; import './vendor/site${snapshot.css}'; import './src/webos-ui.css'; window.SpelunkrWebOS.ready.then(()=>import('./vendor/site${snapshot.main}')); `,resolveDir:process.cwd()},outfile:'dist/app.js',bundle:true,format:'iife',target:'chrome87',minify:true,define:{'import.meta':'{}'},plugins:[adaptLocation]});
+// webOS 6.x (LG C1 and older) ships Chromium 79. Targeting anything newer emits
+// syntax that browser cannot parse, which fails the entire bundle with a
+// SyntaxError before a single statement runs -- the app then sits on its
+// "PLEASE STAND BY" placeholder with no error surface. Runtime APIs missing from
+// Chromium 79 are shimmed in src/legacy-shims.js, which must be imported first.
+const BROWSER_TARGET='chrome79';
+await build({stdin:{contents:`import './src/legacy-shims.js'; import './src/webos-bridge.js'; import './vendor/site${snapshot.css}'; import './src/webos-ui.css'; window.SpelunkrWebOS.ready.then(()=>import('./vendor/site${snapshot.main}')); `,resolveDir:process.cwd()},outfile:'dist/app.js',bundle:true,format:'iife',target:BROWSER_TARGET,minify:true,define:{'import.meta':'{}'},plugins:[adaptLocation]});
+// Guard: a target regression has to fail here, not on someone's TV.
+try{parse(await readFile('dist/app.js','utf8'),{ecmaVersion:2019,sourceType:'script'});}
+catch(error){throw new Error(`dist/app.js is not ES2019-parseable, so webOS 6 cannot load it (${error.message}). Check BROWSER_TARGET in scripts/build.mjs.`);}
 for(const file of ['index.html','appinfo.json'])await copyFile('src/'+file,'dist/'+file);
 // Original pixel S icon, generated without external artwork or image dependencies.
 function crc(bytes){let c=0xffffffff;for(const byte of bytes){c^=byte;for(let n=0;n<8;n++)c=(c>>>1)^((c&1)?0xedb88320:0);}return (c^0xffffffff)>>>0;}

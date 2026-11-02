@@ -32,7 +32,7 @@ ares-install --device YOUR_TV tv.spelunkr.webos_0.3.7_all.ipk
 ares-launch --device YOUR_TV tv.spelunkr.webos
 ```
 
-Developer Mode installations require Developer Mode to remain enabled. Homebrew Channel installations require a TV configured for Homebrew. Tested on webOS 9.2.2; older versions have not been validated.
+Developer Mode installations require Developer Mode to remain enabled. Homebrew Channel installations require a TV configured for Homebrew. Tested on webOS 9.2.2 and on webOS 6.5.3 (LG C1, Chromium 79); older versions have not been validated.
 
 ## Remote controls
 
@@ -64,6 +64,8 @@ npm run package
 ```
 
 The package is written to `output/`. `sync:site` downloads the pinned public website assets and verifies their SHA-256 hashes. Those downloaded assets, generated packages, local credentials, and development experiments are excluded from Git.
+
+The bundle is built for `chrome79` on purpose. webOS 6.x (LG C1 and older) ships Chromium 79, which cannot parse nullish coalescing or optional chaining: one such token makes the browser discard the whole `app.js` with a `SyntaxError` before any of it runs, and the app then sits on its `PLEASE STAND BY` placeholder with nothing in the UI to explain it. `scripts/build.mjs` therefore targets `chrome79`, appends the runtime shims in `src/legacy-shims.js` (`structuredClone`, `crypto.randomUUID` — APIs that cannot be transpiled), and fails the build if `dist/app.js` is not ES2019-parseable. Raising the target past `chrome79` breaks every pre-webOS-7 TV.
 
 ```sh
 npm run dev                 # Local preview; TV services require a TV
